@@ -349,7 +349,7 @@ class DataModel extends CI_Model
 			{
 				$this->db->select('*');
 				//$this->db->where('type', 'Staff');
-				$this->db->from('admin');
+				$this->db->from('staff');
 				$query = $this->db->get();
 				$result = $query->result_array();
 				return $result;
@@ -359,7 +359,7 @@ class DataModel extends CI_Model
 			{
 				$this->db->select('*');
 				$this->db->where('ID',$staff_id);
-				$this->db->from('admin');
+				$this->db->from('staff');
 				$query = $this->db->get();
 				//print $this->db->last_query();die;
 				$result = $query->result_array();
@@ -369,14 +369,14 @@ class DataModel extends CI_Model
 		public function updatestaff($staff_id, $data)
 			{
 				$this->db->where('ID', $staff_id);
-				return $this->db->update('admin', $data);
+				return $this->db->update('staff', $data);
 
 			}
 
 		public function deleteStaff($staff_id)
 			{
 				$whereArray = array("id"=>$staff_id);
-				$query = $this->db->delete('admin',$whereArray);
+				$query = $this->db->delete('staff',$whereArray);
 				if ($query) {
 					return true;
 				} else {
@@ -454,10 +454,10 @@ class DataModel extends CI_Model
 						return false;
 					}
 				}
-				public function adminEmailCheck($email)
+				public function staffEmailCheck($email)
 				{
 						$this->db->where('username',$email);
-						$query = $this->db->get('admin');
+						$query = $this->db->get('staff');
 						if ($query->num_rows() > 0){
 							return true;
 							}
