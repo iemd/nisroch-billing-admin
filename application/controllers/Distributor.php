@@ -23,20 +23,20 @@ class Distributor extends CI_Controller {
 		$this->load->view('common/header');
 		$this->load->view('distributor');
 	}
-	
+
 	public function CreateDistibutor()
 	{
 		$data['name'] = $this->input->post('name');
 		$data['bcode'] = $this->input->post('BuyerCode');
 		$data['State'] = $this->input->post('State');
-		$data['City'] = $this->input->post('City');		
+		$data['City'] = $this->input->post('City');
 		$data['Pincode'] = $this->input->post('Pincode');
 		$data['DAddress'] = $this->input->post('DAddress');
 		$data['email'] = $this->input->post('email');
 		$data['number'] = $this->input->post('number');
 		$data['gst'] = $this->input->post('gst');
 		$data['pos'] = $this->input->post('pos');
-		$data['Destination'] = $this->input->post('Destination');		
+		$data['Destination'] = $this->input->post('Destination');
 		$data['pnumber'] = $this->input->post('pnumber');
 		$data['npp'] = $this->input->post('npp');
 		$data['nbp'] = $this->input->post('nbp');
@@ -44,18 +44,21 @@ class Distributor extends CI_Controller {
 		$data['nbpLimit'] = $this->input->post('nbpLimit');
 		$data['currentNpp'] = $this->input->post('nppLimit');
 		$data['currentNbp'] = $this->input->post('nbpLimit');
-		
+		$data['status'] = 1;
+		$data['created_by'] = 0;
+		$data['approved_by'] = 'Admin';
+
 		$insert =  $this->db->insert('distributor',$data);
 		if($insert)
 		{
 			$message = $this->session->set_flashdata('message', '1 Distributor successfully added');
 			redirect(base_url('Distributor/'), 'refresh', $message);
-			
+
 		}
-		
+
 	}
-	
-	
+
+
 	public function Listing()
 	{
 		$this->load->model('DataModel');
@@ -64,7 +67,7 @@ class Distributor extends CI_Controller {
 		$this->load->view('common/header');
 		$this->load->view('distributorList', $data);
 	}
-	
+
 	public function editDistributor($dist_id=null)
 	{
 		$this->load->model('DataModel');
@@ -73,7 +76,7 @@ class Distributor extends CI_Controller {
 		$this->load->view('common/header');
 		$this->load->view('editdistributor', $data);
 	}
-	
+
 	public function Credit($dist_id=null)
 	{
 		$this->load->model('DataModel');
@@ -83,7 +86,7 @@ class Distributor extends CI_Controller {
 		$this->load->view('common/header');
 		$this->load->view('editCredit', $data);
 	}
-	
+
 	public function UpdateCredit($bill_id=null)
 	{
 		$this->load->model('DataModel');
@@ -95,9 +98,9 @@ class Distributor extends CI_Controller {
 		$data1['dis_id'] = $Distributor_id;
 		$data1['billid'] = $bill_id;
 		$currnpplimit = $this->input->post('currnpplimit');
-		
+
 		$currnbplimit = $this->input->post('currnbplimit');
-			
+
 		$addnppcredit = $this->input->post('addnppcredit');
 		$addnbpcredit = $this->input->post('addnbpcredit');
 		$data1['Remarks'] = $this->input->post('Remark');
@@ -106,10 +109,10 @@ class Distributor extends CI_Controller {
 		if(!empty($addnppcredit)){
 			$data1['previousLimt'] = $currnpplimit;
 			$credit = $this->input->post('addnppcredit');
-			$data1['Credit'] = $credit; 
+			$data1['Credit'] = $credit;
 			$bill['Credit1'] = $credit;
 			$userbalance = $this->input->post('userbalance');
-			
+
 			if(!empty($Discount)){
 			$addnpp = $addnppcredit * $Discount / 100;
 			$credit1 = $addnpp + $credit;
@@ -126,14 +129,14 @@ class Distributor extends CI_Controller {
 			$led['user_balance'] = $userbalance + $credit;
 			}
 		}
-		
+
 		if(!empty($addnbpcredit)){
 			$credit = $this->input->post('addnbpcredit');
-			$data1['Credit'] = $credit; 
+			$data1['Credit'] = $credit;
 			$bill['Credit1'] = $credit;
 			$data1['previousLimt'] = $currnbplimit;
 			$userbalance = $this->input->post('userbalance');
-						
+
 			if(!empty($Discount)){
 			$addnbp = $addnbpcredit * $Discount / 100;
 			$credit1 = $addnbp + $credit;
@@ -150,33 +153,33 @@ class Distributor extends CI_Controller {
 			$led['user_balance'] = $userbalance + $credit;
 			}
 		}
-		
+
 		$update = $this->DataModel->updateCreditDist($Distributor_id, $data);
 		if($update){
-			
+
 			$this->db->insert('ledger',$data1);
 			$this->DataModel->updatebillCredit($bill_id, $bill);
 			$this->DataModel->updateled($bill_id, $led);
 			$message = $this->session->set_flashdata('message', 'Ledger Updated');
 			redirect(base_url('Inventory/Ledger'), 'refresh');
 		}
-		
+
 	}
-	
+
 	public function UpdateDistibutor($dist_id=null)
 	{
 		$this->load->model('DataModel');
 		$data['name'] = $this->input->post('name');
 		$data['bcode'] = $this->input->post('BuyerCode');
 		$data['State'] = $this->input->post('State');
-		$data['City'] = $this->input->post('City');		
+		$data['City'] = $this->input->post('City');
 		$data['Pincode'] = $this->input->post('Pincode');
 		$data['DAddress'] = $this->input->post('DAddress');
 		$data['email'] = $this->input->post('email');
 		$data['number'] = $this->input->post('number');
 		$data['gst'] = $this->input->post('gst');
 		$data['pos'] = $this->input->post('pos');
-		$data['Destination'] = $this->input->post('Destination');		
+		$data['Destination'] = $this->input->post('Destination');
 		$data['pnumber'] = $this->input->post('pnumber');
 		$data['npp'] = $this->input->post('npp');
 		$data['nbp'] = $this->input->post('nbp');
@@ -184,15 +187,18 @@ class Distributor extends CI_Controller {
 		$data['nbpLimit'] = $this->input->post('nbpLimit');
 		$data['currentNpp'] = $this->input->post('nppLimit');
 		$data['currentNbp'] = $this->input->post('nbpLimit');
-		
+		$data['status'] = 1;
+		$data['created_by'] = 0;
+		$data['approved_by'] = 'Admin';
+
 		$update = $this->DataModel->updatedistributor($dist_id, $data);
 		if($update){
 			$message = $this->session->set_flashdata('message', 'Updated successfully !');
 			redirect(base_url('Distributor/Listing'), 'refresh');
 		}
 	}
-	
-	
+
+
 	public function deleteDistributor($dist_id=null)
 	{
 		$this->load->model('DataModel');
@@ -202,9 +208,9 @@ class Distributor extends CI_Controller {
 			redirect(base_url('Distributor/Listing'), 'refresh');
 		}
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 }
