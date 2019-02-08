@@ -293,10 +293,10 @@ foreach($adminprofile as $row1){
 			<td style="border:none; padding: 0.25em;"><b>CGST | SGST :</b> <?php //echo $row['gst']; ?></td>
      </tr>-->
       <tr>
-      <td style="border:none; padding: 0.25em;"><b>CGST :</b> Rs. <?php echo round(($row['gst']/2),2); ?></td>
+      <td style="border:none; padding: 0.25em;"><b>CGST :</b> Rs. <?php echo number_format((float)($row['gst']/2), 2, '.', ''); ?></td>
       </tr>
       <tr>
-      <td style="border:none; padding: 0.25em;"><b>SGST :</b> Rs. <?php echo round(($row['gst']/2),2); ?></td>
+      <td style="border:none; padding: 0.25em;"><b>SGST :</b> Rs. <?php echo number_format((float)($row['gst']/2), 2, '.', ''); ?></td>
       </tr>
 		  <?php }else if($row['Billtaxtype'] == 'IGST'){ ?>
 		  <tr>
