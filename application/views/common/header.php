@@ -51,64 +51,23 @@
                         <a href="<?php echo base_url('AdminPanel/Dasboard'); ?>"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
                     <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
-					<li>
-                        <a href="<?php echo base_url('Distributor'); ?>"> <i class="menu-icon fa fa-laptop"></i>Create Distributor</a>
-
-                    </li>
-
-					<li>
-                        <a href="<?php echo base_url('Distributor/Listing'); ?>"> <i class="menu-icon fa fa-laptop"></i>Distributor List</a>
-
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url('Product/'); ?>"> <i class="menu-icon fa fa-laptop"></i>Product Entry</a>
-
-                    </li>
-					<li>
-                        <a href="<?php echo base_url('Inventory/Ledger'); ?>"> <i class="menu-icon ti-email"></i>Ledger </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url('Product/Listing'); ?>"> <i class="menu-icon fa fa-table"></i>View Product</a>
-
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url('Inventory/'); ?>"> <i class="menu-icon ti-email"></i>Inventory </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url('Billing'); ?>" class="dropdown-toggle" > <i class="menu-icon fa fa-bar-chart"></i>Billing</a>
-
-                    </li>
-					<li>
-                        <a href="<?php echo base_url('Billing/InvoiceView'); ?>"> <i class="menu-icon fa fa-th"></i>Invoice</a>
-
-                    </li>
-
-					<!--<li>
+					          <li><a href="<?php echo base_url('Distributor'); ?>"> <i class="menu-icon fa fa-laptop"></i>Create Distributor</a></li>
+					          <li><a href="<?php echo base_url('Distributor/Listing'); ?>"> <i class="menu-icon fa fa-laptop"></i>Distributor List</a></li>
+                    <li><a href="<?php echo base_url('Product/'); ?>"> <i class="menu-icon fa fa-laptop"></i>Product Entry</a></li>
+					          <li><a href="<?php echo base_url('Inventory/Ledger'); ?>"> <i class="menu-icon ti-email"></i>Ledger</a></li>
+                    <li><a href="<?php echo base_url('Inventory/LedgerDistributor'); ?>"> <i class="menu-icon ti-email"></i>Accumulated Ledger</a></li>
+                    <li><a href="<?php echo base_url('Product/Listing'); ?>"> <i class="menu-icon fa fa-table"></i>View Product</a></li>
+                    <li><a href="<?php echo base_url('Inventory/'); ?>"> <i class="menu-icon ti-email"></i>Inventory </a></li>
+                    <li><a href="<?php echo base_url('Billing'); ?>" class="dropdown-toggle" > <i class="menu-icon fa fa-bar-chart"></i>Billing</a></li>
+					          <li><a href="<?php echo base_url('Billing/InvoiceView'); ?>"> <i class="menu-icon fa fa-th"></i>Invoice</a></li>
+					          <!--<li>
                         <a href="<?php echo base_url('AdminPanel/CustomerList'); ?>" class="dropdown-toggle" > <i class="menu-icon fa fa-bar-chart"></i>Customer List</a>
 
                     </li>-->
-                    <li>
-                        <a href="<?php echo base_url('transport/'); ?>" class="dropdown-toggle" > <i class="menu-icon fa fa-bar-chart"></i>Create Transport</a>
-
-                    </li>
-
-
-					<li>
-                        <a href="<?php echo base_url('Staff/'); ?>" class="dropdown-toggle" > <i class="menu-icon fa fa-bar-chart"></i>Create Staff</a>
-
-                    </li>
-                     <li>
-                        <a href="<?php echo base_url('Designation_Controller/'); ?>" class="dropdown-toggle" > <i class="menu-icon fa fa-bar-chart"></i>Create Designation</a>
-
-                    </li>
-
-
-                    <li>
-                        <a href="<?php echo base_url('AdminPanel/logOut'); ?>" class="dropdown-toggle" > <i class="menu-icon fa fa-area-chart"></i>Logout</a>
-
-                    </li>
-
-
+                    <li><a href="<?php echo base_url('transport/'); ?>" class="dropdown-toggle" > <i class="menu-icon fa fa-bar-chart"></i>Create Transport</a></li>
+				            <li><a href="<?php echo base_url('Staff/'); ?>" class="dropdown-toggle" > <i class="menu-icon fa fa-bar-chart"></i>Create Staff</a></li>
+                    <li><a href="<?php echo base_url('Designation_Controller/'); ?>" class="dropdown-toggle" > <i class="menu-icon fa fa-bar-chart"></i>Create Designation</a></li>
+                    <li><a href="<?php echo base_url('AdminPanel/logOut'); ?>" class="dropdown-toggle" > <i class="menu-icon fa fa-area-chart"></i>Logout</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>

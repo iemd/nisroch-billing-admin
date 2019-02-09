@@ -214,7 +214,28 @@ class DataModel extends CI_Model
 				$result = $query->result_array();
 				return $result;
 			}
-
+			public function getLedgerByDistributor($dist_id, $from, $to)
+			{
+				$this->db->select('*');
+				//$this->db->where('payment_status','Done');
+				$this->db->from('ledger');
+				$this->db->where('ledger.dis_id',$dist_id);
+				if(!empty($from)){
+					$datefrom = date("Y/m/d", strtotime($from));
+					$this->db->where('ledger.ledgerdate >=', $datefrom);
+				}
+				if(!empty($to)){
+					  $dateto = date("Y/m/d", strtotime($to));
+						$this->db->where('ledger.ledgerdate <=', $dateto);
+				}
+				$this->db->join('distributor', 'ledger.dis_id = distributor.dist_id', 'full');
+				$this->db->join('billing', 'ledger.billid = billing.bill_id', 'full');
+				$this->db->order_by('ledger_id','ASC');
+				$query = $this->db->get();
+				//print $this->db->last_query();die;
+				$result = $query->result_array();
+				return $result;
+			}
 		public function debitList($dist_id)
 			{
 				$this->db->select('*');

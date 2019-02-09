@@ -34,7 +34,29 @@ class Inventory extends CI_Controller {
 		$this->load->view('common/header');
 		$this->load->view('ledger', $data);
 	}
-
+	public function LedgerDistributor($dist_id = null,$from = null, $to = null)
+	{
+		$this->load->model('DataModel');
+		$data['DistributorList'] = $this->DataModel->distributorlist();
+		$data['DistributorID'] = $dist_id;
+		$data['DateFrom'] = $from;
+		$data['DateTo'] = $to;
+		$data['DistributorLedger'] = $this->DataModel->getLedgerByDistributor($dist_id, $from, $to);
+		//print_r($data['ledger']);die;
+		$this->load->view('common/header');
+		$this->load->view('ledgerdistributor', $data);
+	}
+	public function LedgerPrintDistributor($dist_id = null,$from = null, $to = null)
+	{
+		$this->load->model('DataModel');
+		$data['DistributorID'] = $dist_id;
+		$data['DateFrom'] = $from;
+		$data['DateTo'] = $to;
+		$data['LedgerPrintDistributor'] = $this->DataModel->getLedgerByDistributor($dist_id, $from, $to);
+		//print_r($data['ledger']);die;
+		//$this->load->view('common/header');
+		$this->load->view('ledgerprintdist', $data);
+	}
 	public function LedgerPrint($bill_id=null)
 	{
 		$this->load->model('DataModel');
