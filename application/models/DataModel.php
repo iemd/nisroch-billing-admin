@@ -266,7 +266,29 @@ class DataModel extends CI_Model
 				$result = $query->result_array();
 				return $result;
 			}
-
+			public function StaffDistributorlist($staff_id=null)
+ 			{
+ 				$this->db->select('*');
+ 				$this->db->where('staff_distributor.staffid',$staff_id);
+ 				$this->db->from('staff_distributor');
+ 				$this->db->join('distributor', 'staff_distributor.distid = distributor.dist_id');
+ 				$query = $this->db->get();
+ 				//print $this->db->last_query();die;
+ 				$result = $query->result_array();
+ 				return $result;
+ 			}
+			public function StaffApprovedDistributorlist($staff_id=null)
+				{
+					$this->db->select('*');
+					$this->db->where('staff_distributor.staffid',$staff_id);
+					$this->db->where('distributor.status',1);
+					$this->db->from('staff_distributor');
+					$this->db->join('distributor', 'staff_distributor.distid = distributor.dist_id');
+					$query = $this->db->get();
+					//print $this->db->last_query();die;
+					$result = $query->result_array();
+					return $result;
+				}
 		public function distributorlist()
 			{
 				$this->db->select('*');
@@ -386,7 +408,27 @@ class DataModel extends CI_Model
 				$result = $query->result_array();
 				return $result;
 			}
-
+		public function AllocateRemoveDistributor($dist_ids = null, $staff_id=null)
+	 	{
+			 if(empty($dist_ids)){
+				 $whereArray = array("staffid"=>$staff_id);
+				 $query = $this->db->delete('staff_distributor',$whereArray);
+				 if ($query) {
+					 return true;
+				 } else {
+					 return false;
+					 }
+			 }else{
+				 $whereArray = array("staffid"=>$staff_id);
+				 $query = $this->db->delete('staff_distributor',$whereArray);
+				 foreach($dist_ids as $dist_id){
+					 $data['staffid'] = $staff_id;
+					 $data['distid'] = $dist_id;
+					 $allocated = $this->db->insert('staff_distributor',$data);
+				}
+			}
+				 return $allocated;
+		}
 		public function updatestaff($staff_id, $data)
 			{
 				$this->db->where('ID', $staff_id);
