@@ -21,13 +21,13 @@
                                 <?php } ?>
                                 </select>
                            </div>
-                            <!--<div class="col-12 col-md-3">
-                              <label for="text-input" class=" form-control-label">From</label>
+                            <div class="col-12 col-md-6">
+                              <!--<label for="text-input" class=" form-control-label">From</label>
                                <input type="text" id="datefrom" name="datefrom" value="<?php //if(!empty($DateFrom)){echo $DateFrom;} ?>" placeholder="YYYY-MM-DD" class="form-control"></div>
                             <div class="col-12 col-md-3">
                               <label for="text-input" class=" form-control-label">To</label>
-                              <input type="text" id="dateto" name="dateto" value="<?php //if(!empty($DateTo)){echo $DateTo;} ?>" placeholder="YYYY-MM-DD" class="form-control">
-                            </div>-->
+                              <input type="text" id="dateto" name="dateto" value="<?php //if(!empty($DateTo)){echo $DateTo;} ?>" placeholder="YYYY-MM-DD" class="form-control">-->
+                            </div>
             <div class="col-12 col-md-3" style="text-align:right;">
               <a class="btn btn-primary btn-sm" href="
                            <?php

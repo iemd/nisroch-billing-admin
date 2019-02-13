@@ -308,6 +308,16 @@ class DataModel extends CI_Model
 						$result = $query->result_array();
 						return $result;
 					}
+					public function getSpecialCredit($dist_id = null)
+						{
+							$this->db->select('*');
+							$this->db->where('distid',$dist_id);
+							$this->db->from('distributor_special_credit');
+							$query = $this->db->get();
+							//print $this->db->last_query();die;
+							$result = $query->result_array();
+							return $result;
+					  }
 					public function delSpecialCredit($dsc_id)
 						{
 							$whereArray = array("dsc_id"=>$dsc_id);

@@ -53,6 +53,7 @@ class Inventory extends CI_Controller {
 		$data['DateFrom'] = $from;
 		$data['DateTo'] = $to;
 		$data['LedgerPrintDistributor'] = $this->DataModel->getLedgerByDistributor($dist_id, $from, $to);
+		$data['SpecialCredit'] = $this->DataModel->getSpecialCredit($dist_id);
 		//print_r($data['ledger']);die;
 		//$this->load->view('common/header');
 		$this->load->view('ledgerprintdist', $data);

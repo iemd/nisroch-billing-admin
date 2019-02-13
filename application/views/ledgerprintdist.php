@@ -171,7 +171,7 @@ td {
 		  </tr>
 
 		  <tr>
-			<td style="border:none;"><b>INVOICE NO :</b> <?php echo $row['Invoice']; ?></td>
+			<td style="border:none;"><!--<b>INVOICE NO :</b> <?php //echo $row['Invoice']; ?>--></td>
 		  </tr>
 
 		  <tr>
@@ -241,38 +241,40 @@ td {
       <tr>
         <th>S.No.</th>
 		<th>Date</th>
+    <th>Invoice ID</th>
 		<th>Debit</th>
 		<th>Credit</th>
-		<th>Pay Type | Dis</th>
-        <th>Total Credit</th>
-		<th>Balance</th>
-        <th>Remarks</th>
+    <!--<th>Balance</th>-->
+    <th>Remarks</th>
 
       </tr>
     </thead>
     <tbody>
 	<?php
 	$count = 0;
-
+  $totaldebit = 0;
+  $totalcredit = 0;
 	?>
 	<?php foreach($LedgerPrintDistributor as $row1){  $Dist_ID = $row1['dist_id']; ?>
 	<?php
 
 	$count+=1;
+  $totaldebit+=$row1['debitamount'];
+  $totalcredit+=$row1['Credit'];
+
 	?>
 
       <tr>
         <td><?php echo $count; ?></td>
 		<td><?php echo $row1['ledgerdate']; ?></td>
+    <td><?php echo $row1['Invoice']; ?></td>
 		<td><?php echo $row1['debitamount']; ?></td>
 		 <td><?php echo $row1['Credit']; ?></td>
-		 <td><?php echo $row1['paymentType']; ?> | <?php echo $row1['dis']; ?> %</td>
-        <td><?php echo $row1['totalcredit']; ?></td>
-		<?php if($row1['paymentType'] == 'Debit'){ ?>
-		<td><?php echo $row1['balance'] - $row1['previousLimt']; ?></td>
-		<?php }else{ ?>
-		<td><?php echo $row1['user_balance']; ?></td>
-		<?php } ?>
+		<?php //if($row1['paymentType'] == 'Debit'){ ?>
+		<!--<td><?php //echo $row1['balance'] - $row1['previousLimt']; ?></td>
+		<?php //}else{ ?>
+		<td><?php //echo $row1['user_balance']; ?></td>-->
+		<?php //} ?>
         <td><?php echo $row1['Remarks']; ?></td>
 
 
@@ -281,6 +283,47 @@ td {
 
     </tbody>
 </table>
+<table style="width:100%;border: none;">
+		<tbody><tr>
+		<td>
+
+
+		 <table style="width:30%; float: right; border:none;">
+
+		  <tbody><tr>
+			<td style="border:none; padding: 0.25em;"><b>Balance : Rs.</b> <?php echo ($totaldebit-$totalcredit); ?></td>
+		  </tr>
+		  		  <!--<tr>
+			<td style="border:none; padding: 0.25em;"><b>CGST | SGST :</b> </td>
+     </tr>-->
+      <tr>
+      <td style="border:none; padding: 0.25em;"><b>Credit :</b> Rs. <?php echo $totalcredit; ?></td>
+      </tr>
+      <tr>
+      <td style="border:none; padding: 0.25em;"><b>Debit :</b> Rs. <?php echo $totaldebit; ?></td>
+      </tr>
+
+		  <!--<tr>
+			<td style="border:none; padding: 0.25em;"><b>Round :</b> Rs. 0 </td>
+    </tr>-->
+     <?php
+      //print_r($SpecialCredit);
+       $npp = $nbp = 0;
+       foreach($SpecialCredit as $scredit){
+         $npp += $scredit['npp_spl_credit'];
+         $nbp += $scredit['nbp_spl_credit'];
+       }
+      ?>
+		  		  <tr>
+		    			<td style="border:none; padding: 0.25em;"><b>Special Credit : Rs. </b><?php echo $npp." | ".$nbp; ?></td>
+		  </tr>
+		  </tbody></table>
+
+		 </td>
+		 </tr>
+
+
+</tbody></table>
 </div>
 
 
