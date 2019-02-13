@@ -76,14 +76,39 @@ class Distributor extends CI_Controller {
 		$this->load->view('common/header');
 		$this->load->view('editdistributor', $data);
 	}
-	public function addSpecialCredit($dist_id=null)
+	public function SpecialCredit()
 	{
 		$this->load->model('DataModel');
 		$data['distributorlist'] = $this->DataModel->distributorlist();
-		//$data['editdistributor'] = $this->DataModel->editdistributor($dist_id);
-		//print_r($data['editdistributor']);die;
+		$data['SpecialCreditList'] = $this->DataModel->SpecialCreditList();
 		$this->load->view('common/header');
 		$this->load->view('specialcredit',$data);
+	}
+	public function addSpecialCredit()
+	{
+		$data['distid'] = $this->input->post('Distributor');
+		$data['date'] = $this->input->post('creditDate');
+		$data['npp_spl_credit'] = $this->input->post('addnpp');
+		$data['nbp_spl_credit'] = $this->input->post('addnbp');
+		$data['remark'] = $this->input->post('remark');
+		$data['added_by'] = 'Admin';
+		$insert =  $this->db->insert('distributor_special_credit',$data);
+		if($insert)
+		{
+			$message = $this->session->set_flashdata('message', 'Special credit successfully added');
+			redirect(base_url('Distributor/SpecialCredit'), 'refresh', $message);
+
+		}
+
+	}
+	public function deleteSpecialCredit($dist_id=null)
+	{
+		$this->load->model('DataModel');
+		$delete = $this->DataModel->delSpecialCredit($dist_id);
+		if($delete){
+			$message = $this->session->set_flashdata('message', 'Deleted successfully !');
+			redirect(base_url('Distributor/SpecialCredit'), 'refresh');
+		}
 	}
 	public function DCurrentLimit()
 	{

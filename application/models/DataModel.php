@@ -298,6 +298,26 @@ class DataModel extends CI_Model
 						$result = $query->result_array();
 						return $result;
 				}
+				public function SpecialCreditList()
+					{
+						$this->db->select('*');
+						$this->db->from('distributor_special_credit');
+						$this->db->join('distributor', 'distributor_special_credit.distid = distributor.dist_id');
+						$query = $this->db->get();
+						//print $this->db->last_query();die;
+						$result = $query->result_array();
+						return $result;
+					}
+					public function delSpecialCredit($dsc_id)
+						{
+							$whereArray = array("dsc_id"=>$dsc_id);
+							$query = $this->db->delete('distributor_special_credit',$whereArray);
+							if ($query) {
+								return true;
+							} else {
+								return false;
+								}
+						}
 		public function distributorlist()
 			{
 				$this->db->select('*');

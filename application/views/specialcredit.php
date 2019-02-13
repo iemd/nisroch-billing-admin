@@ -83,28 +83,30 @@
                   <table id="bootstrap-data-table" class="table table-striped table-bordered">
                     <thead>
                       <tr>
-                        <th>Name</th>
-                        <th>UserName</th>
-						<th>Type</th>
-                        <th>Number</th>
-                        <th>Created By</th>
-						<th>Action</th>
-
-
+                        <th>Sr.No.</th>
+                        <th>Dist. Name</th>
+                        <th>Date</th>
+						            <th>NPP Credit</th>
+                        <th>NBP Credit</th>
+                        <th>Remark</th>
+						            <th>Added By</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-					<?php //foreach($StaffDetails as $row) { ?>
+					<?php foreach($SpecialCreditList as $row) { ?>
                       <tr>
 					  <?php //print_r($row);die; ?>
-                        <td><?php //echo $row['name']; ?></td>
-                        <td><?php //echo $row['username']; ?></td>
-						<td><?php //echo $row['type']; ?></td>
-                        <td><?php //echo $row['number']; ?></td>
-                        <td><?php //echo $row['created_by']; ?></td>
-						<td><a href="<?php //echo base_url('Staff/editStaff/').$row['ID']; ?>"><i class="fa fa-edit" style="font-size:24px;color:green"></i></a><a href="<?php //echo base_url('Staff/deleteStaff/').$row['ID']; ?>"><i class="fa fa-trash" style="font-size:24px;color:red"></i></a></td>
+                        <td><?php echo $row['dsc_id']; ?></td>
+                        <td><?php echo $row['name']; ?></td>
+                        <td><?php echo $row['date']; ?></td>
+						            <td><?php echo $row['npp_spl_credit']; ?></td>
+                        <td><?php echo $row['nbp_spl_credit']; ?></td>
+                        <td><?php echo $row['remark']; ?></td>
+                        <td><?php echo $row['added_by']; ?></td>
+						<td><!--<a href="<?php //echo base_url('Staff/editStaff/').$row['ID']; ?>"><i class="fa fa-edit" style="font-size:24px;color:green"></i></a>--><a href="<?php echo base_url('Distributor/deleteSpecialCredit/').$row['dsc_id']; ?>"><i class="fa fa-trash" style="font-size:24px;color:red"></i></a></td>
                       </tr>
-					<?php //} ?>
+					<?php } ?>
 
                     </tbody>
                   </table>
@@ -119,12 +121,32 @@
         </div>
 
 
-    <script src="<?php echo base_url()?>assets/js/vendor/jquery-2.1.4.min.js"></script>
-    <script src="<?php echo base_url()?>assets/js/vendor/jquery-ui.min.js"></script>
-    <script src="<?php echo base_url()?>assets/js/vendor/jquery.timepicker.min.js"></script>
-    <script src="<?php echo base_url()?>assets/js/popper.min.js"></script>
-    <script src="<?php echo base_url()?>assets/js/plugins.js"></script>
-    <script src="<?php echo base_url()?>assets/js/main.js"></script>
+    <script src="<?php echo base_url('assets/js/vendor/jquery-2.1.4.min.js')?>"></script>
+    <script src="<?php echo base_url('assets/js/popper.min.js')?>"></script>
+    <script src="<?php echo base_url('assets/js/plugins.js')?>"></script>
+    <script src="<?php echo base_url('assets/js/main.js')?>"></script>
+
+    <script src="<?php echo base_url('assets/js/lib/data-table/datatables.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/lib/data-table/dataTables.bootstrap.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/lib/data-table/dataTables.buttons.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/lib/data-table/buttons.bootstrap.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/lib/data-table/jszip.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/lib/data-table/pdfmake.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/lib/data-table/vfs_fonts.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/lib/data-table/buttons.html5.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/lib/data-table/buttons.print.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/lib/data-table/buttons.colVis.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/lib/data-table/datatables-init.js'); ?>"></script>
+
+    <script src="<?php echo base_url('assets/js/vendor/jquery-ui.min.js')?>"></script>
+    <script src="<?php echo base_url('assets/js/vendor/jquery.timepicker.min.js')?>"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+          $('#bootstrap-data-table-export').DataTable();
+        } );
+    </script>
     <script>
       jQuery( function() {
         jQuery( "#creditDate" ).datepicker( { dateFormat: 'yy-mm-dd' });
