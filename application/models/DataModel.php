@@ -289,6 +289,15 @@ class DataModel extends CI_Model
 					$result = $query->result_array();
 					return $result;
 				}
+				public function StaffDistLimit($dist_id=null)
+					{
+						$this->db->select('*');
+						$this->db->where('dist_id',$dist_id);
+						$this->db->from('distributor');
+						$query = $this->db->get();
+						$result = $query->result_array();
+						return $result;
+				}
 		public function distributorlist()
 			{
 				$this->db->select('*');

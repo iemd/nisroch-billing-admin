@@ -53,6 +53,7 @@
                     <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
 					          <li><a href="<?php echo base_url('Distributor'); ?>"> <i class="menu-icon fa fa-laptop"></i>Create Distributor</a></li>
 					          <li><a href="<?php echo base_url('Distributor/Listing'); ?>"> <i class="menu-icon fa fa-laptop"></i>Distributor List</a></li>
+                    <li><a href="<?php echo base_url('Distributor/addSpecialCredit'); ?>"> <i class="menu-icon fa fa-laptop"></i>Distributor Special Credit</a></li>
                     <li><a href="<?php echo base_url('Staff/Distributor'); ?>"> <i class="menu-icon fa fa-laptop"></i>Staff Distributor</a></li>
                     <li><a href="<?php echo base_url('Product/'); ?>"> <i class="menu-icon fa fa-laptop"></i>Product Entry</a></li>
 					          <li><a href="<?php echo base_url('Inventory/Ledger'); ?>"> <i class="menu-icon ti-email"></i>Ledger</a></li>

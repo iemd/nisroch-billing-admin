@@ -76,7 +76,35 @@ class Distributor extends CI_Controller {
 		$this->load->view('common/header');
 		$this->load->view('editdistributor', $data);
 	}
+	public function addSpecialCredit($dist_id=null)
+	{
+		$this->load->model('DataModel');
+		$data['distributorlist'] = $this->DataModel->distributorlist();
+		//$data['editdistributor'] = $this->DataModel->editdistributor($dist_id);
+		//print_r($data['editdistributor']);die;
+		$this->load->view('common/header');
+		$this->load->view('specialcredit',$data);
+	}
+	public function DCurrentLimit()
+	{
+		$this->load->model('DataModel');
+		$dist_id = $this->input->post('dist_id');
+		$limit="";
+		if(!empty($dist_id)){
+			$distlimit = $this->DataModel->StaffDistLimit($dist_id);
+			foreach($distlimit as $row){
+			}
+			$nppLimit = $row['currentNpp'];
+			$nbpLimit = $row['currentNbp'];
+	$limit= "<div class='col col-md-4'><label for='text-input' class='form-control-label'>Current Balance</label></div>
+	      <div class='col col-md-4'><label for='text-input' class='form-control-label'>NPP Balance</label><input type='text' id='nppLimit' name='nppLimit' value='$nppLimit' placeholder='NPP Limit' class='form-control' readonly></div>
+			  <div class='col col-md-4'><label for='text-input' class='form-control-label'>NBP Balance</label><input type='text' id='nbpLimit' name='nbpLimit' value='$nbpLimit' placeholder='NBP Limit' class='form-control' readonly></div>";
+		echo $limit;
+	}else{
+		echo $limit;
+	}
 
+ }
 	public function Credit($dist_id=null)
 	{
 		$this->load->model('DataModel');
@@ -208,9 +236,5 @@ class Distributor extends CI_Controller {
 			redirect(base_url('Distributor/Listing'), 'refresh');
 		}
 	}
-
-
-
-
 
 }
