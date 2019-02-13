@@ -102,7 +102,7 @@ class Staff extends CI_Controller {
 		$data['StaffID'] = $staff_id;
 		//print_r($data['StaffDetails']);
 		$this->load->view('common/header');
-		$this->load->view('staffdistributor',$data);
+		$this->load->view('allocatedistributor',$data);
 	}
 	public function SaveDistributor()
 	{

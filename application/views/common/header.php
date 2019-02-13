@@ -54,7 +54,7 @@
 					          <li><a href="<?php echo base_url('Distributor'); ?>"> <i class="menu-icon fa fa-laptop"></i>Create Distributor</a></li>
 					          <li><a href="<?php echo base_url('Distributor/Listing'); ?>"> <i class="menu-icon fa fa-laptop"></i>Distributor List</a></li>
                     <li><a href="<?php echo base_url('Distributor/SpecialCredit'); ?>"> <i class="menu-icon fa fa-laptop"></i>Distributor Special Credit</a></li>
-                    <li><a href="<?php echo base_url('Staff/Distributor'); ?>"> <i class="menu-icon fa fa-laptop"></i>Staff Distributor</a></li>
+                    <li><a href="<?php echo base_url('Staff/Distributor'); ?>"> <i class="menu-icon fa fa-laptop"></i>Staff Distributor (Allocate)</a></li>
                     <li><a href="<?php echo base_url('Product/'); ?>"> <i class="menu-icon fa fa-laptop"></i>Product Entry</a></li>
 					          <li><a href="<?php echo base_url('Inventory/Ledger'); ?>"> <i class="menu-icon ti-email"></i>Ledger</a></li>
                     <li><a href="<?php echo base_url('Inventory/LedgerDistributor'); ?>"> <i class="menu-icon ti-email"></i>Accumulated Ledger</a></li>
